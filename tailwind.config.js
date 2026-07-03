@@ -1,0 +1,72 @@
+export default {
+  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "surface-variant": "#353535",
+        "on-primary": "#1a1c1c",
+        "inverse-surface": "#e2e2e2",
+        "secondary-fixed": "#c8c6c5",
+        "on-background": "#e2e2e2",
+        "on-secondary-fixed": "#1c1b1b",
+        "on-secondary-fixed-variant": "#3c3b3b",
+        "on-secondary-container": "#e5e2e1",
+        "on-error": "#690005",
+        "primary": "#ffffff",
+        "inverse-on-surface": "#303030",
+        "background": "#131313",
+        "on-surface-variant": "#c6c6c6",
+        "outline": "#919191",
+        "surface-dim": "#131313",
+        "outline-variant": "#474747",
+        "surface-bright": "#393939",
+        "on-tertiary-fixed": "#ffffff",
+        "surface-container-high": "#2a2a2a",
+        "tertiary-fixed-dim": "#454747",
+        "surface-container-low": "#1b1b1b",
+        "on-secondary": "#1c1b1b",
+        "tertiary-container": "#909191",
+        "primary-fixed": "#5d5f5f",
+        "surface-container-highest": "#353535",
+        "tertiary": "#e2e2e2",
+        "inverse-primary": "#5d5f5f",
+        "on-tertiary": "#1a1c1c",
+        "error-container": "#93000a",
+        "on-error-container": "#ffdad6",
+        "primary-fixed-dim": "#454747",
+        "secondary-container": "#474746",
+        "secondary-fixed-dim": "#adabaa",
+        "secondary": "#c8c6c5",
+        "tertiary-fixed": "#5d5f5f",
+        "on-surface": "#e2e2e2",
+        "error": "#ffb4ab",
+        "primary-container": "#d4d4d4",
+        "on-tertiary-container": "#000000",
+        "surface-container": "#1f1f1f",
+        "surface": "#131313",
+        "on-primary-fixed": "#ffffff",
+        "on-primary-container": "#000000",
+        "on-primary-fixed-variant": "#e2e2e2",
+        "on-tertiary-fixed-variant": "#e2e2e2",
+        "surface-container-lowest": "#0e0e0e",
+        "surface-tint": "#c6c6c7"
+      },
+      borderRadius: {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      fontFamily: {
+        "headline": ["Instrument Serif", "serif"],
+        "body": ["Manrope", "sans-serif"],
+        "label": ["Inter", "sans-serif"]
+      }
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/container-queries')
+  ],
+}

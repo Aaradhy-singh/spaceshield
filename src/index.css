@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #131313;
+    color: #ffffff;
+    font-family: 'Manrope', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 1;
+}
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.1) 60%, rgba(255, 255, 255, 0.45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+.serif-italic {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+}
+.serif-regular {
+  font-family: 'Instrument Serif', serif;
+}
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fadeIn 2s ease-out forwards;
+}
+
+/* Increase text brightness globally across the entire website */
+.text-white\/40,
+.text-white\/35,
+.text-white\/30,
+.text-white\/20,
+.text-white\/50,
+.text-white\/60 {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+.text-gray-400,
+.text-gray-500 {
+  color: #f3f4f6 !important; /* text-gray-100 */
+}
