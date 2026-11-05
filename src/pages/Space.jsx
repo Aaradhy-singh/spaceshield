@@ -45,7 +45,7 @@ export default function Space({ searchTerm }) {
         })));
       }
 
-      setFeedError(results.every((result) => result.status === 'rejected'));
+      setFeedError(results.some((result) => result.status === 'rejected'));
       setLoading(false);
     }
 
@@ -77,7 +77,7 @@ export default function Space({ searchTerm }) {
   return (
     <div style={{ backgroundColor: '#060B14' }} className="min-h-screen p-4 md:p-8 text-white">
       <div className="max-w-7xl mx-auto space-y-16">
-        {feedError && <p role="alert" className="text-amber-300">News feeds are temporarily unavailable. Please try again later.</p>}
+        {feedError && <p role="alert" className="text-amber-300">Some news feeds are temporarily unavailable; other available feeds are still shown.</p>}
         <section>
           <div className="mb-6">
             <h2 className="text-3xl font-bold text-white mb-2">🇮🇳 Indian Space</h2>
