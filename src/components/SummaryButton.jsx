@@ -5,7 +5,6 @@ export default function SummaryButton({ text, variant }) {
   const { summarise, loading, error } = useGroqSummary();
   const [summary, setSummary] = useState(null);
   const [summarised, setSummarised] = useState(false);
-  const [noTextError, setNoTextError] = useState(false);
 
   const cleanText = text?.replace(/<[^>]*>/g, '').trim();
   const tooShort = !cleanText || cleanText.length < 50;
@@ -14,7 +13,6 @@ export default function SummaryButton({ text, variant }) {
     if (tooShort) {
       return;
     }
-    setNoTextError(false);
     const result = await summarise(cleanText);
     if (result) {
       setSummary(result);

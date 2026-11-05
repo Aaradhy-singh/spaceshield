@@ -1,31 +1,37 @@
 import { useState } from 'react';
+
 export function useGroqSummary() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
   async function summarise(text) {
     setLoading(true);
     setError(null);
+
     try {
-      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      const response = await fetch('/api/summarize', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_GROQ_KEY}`
-        },
-        body: JSON.stringify({
-          model: 'llama-3.1-8b-instant',
-          messages: [{ role: 'user', content: 'Summarise this news article in exactly 3 bullet points, each under 20 words: ' + text }],
-          max_tokens: 200
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text }),
       });
-      const data = await res.json();
-      return data.choices[0].message.content;
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(data?.error || 'The summary service is temporarily unavailable.');
+      }
+
+      if (typeof data?.summary !== 'string' || !data.summary.trim()) {
+        throw new Error('The summary service returned an unexpected response.');
+      }
+
+      return data.summary;
     } catch (err) {
-      setError(err.message);
+      setError(err instanceof Error ? err.message : 'The summary request failed.');
       return null;
     } finally {
       setLoading(false);
     }
   }
+
   return { summarise, loading, error };
 }
