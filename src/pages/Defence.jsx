@@ -39,7 +39,7 @@ export default function Defence({ searchTerm }) {
         setGlobalDefence(globalResult.value);
       }
 
-      setFeedError(results.every((result) => result.status === 'rejected'));
+      setFeedError(results.some((result) => result.status === 'rejected'));
       setLoading(false);
     }
 
@@ -71,7 +71,7 @@ export default function Defence({ searchTerm }) {
   return (
     <div style={{ backgroundColor: '#0A0F1E' }} className="min-h-screen p-4 md:p-8">
       <div className="max-w-7xl mx-auto space-y-16 text-white">
-        {feedError && <p role="alert" className="text-amber-300">The defence feeds are temporarily unavailable. Please try again later.</p>}
+        {feedError && <p role="alert" className="text-amber-300">Some defence feeds are temporarily unavailable; other available feeds are still shown.</p>}
         <section>
           <div className="mb-6">
             <h2 className="text-3xl font-bold text-white mb-2">🇮🇳 Indian Defence</h2>
