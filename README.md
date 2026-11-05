@@ -11,7 +11,7 @@ Live site routing includes specialized sections for **Space Intelligence**, **De
 * **🇮🇳 Indian Space & Defence First**: Prioritized news coverage from ISRO launchpads, naval command commissions, DRDO tests, and national strategic updates.
 * **🌍 Global Watch**: Tracks NATO, the Pentagon, international space agency press releases, and astronautical mission events.
 * **📰 Headline Ribbon**: A visual ribbon highlighting SpaceShield's space and defence coverage areas.
-* **🧠 AI-Powered Summaries**: Instantly isolates facts and summarizes complex defense articles using Groq's high-speed inference engine powered by LLaMA 3 models.
+* **🧠 On-Demand Article Summaries**: Creates concise summaries of selected articles using Groq.
 * **🎨 Premium Dark Theme**: Beautiful glassmorphic UI using a curated color palette (HSL Tailored, vibrant orange/red accents) with seamless scroll animations and smooth video crossfades.
 
 ---
@@ -61,14 +61,12 @@ Install the Vercel CLI once, then run the app and its API functions together:
 npm install -g vercel
 npm run dev
 ```
-Open [http://localhost:5173](http://localhost:5173) in your browser to view the site.
+Vercel CLI typically serves the local app at [http://localhost:3000](http://localhost:3000); use the URL printed by `vercel dev` if it selects another port.
 
 ### 📦 Production Build
-To build the application for deployment:
-```bash
-npm run build
-npm run preview
-```
+`npm run build` creates the frontend bundle. `npm run preview` previews that static bundle only; it does not run the Vercel API functions. Use `vercel dev` to test the full app locally, and deploy through Vercel to run the server functions in production.
+
+The in-memory API rate limit is best-effort because serverless instances do not share memory. Configure Vercel Firewall rate-limit rules for `/api/summarize` and `/api/guardian` for production protection.
 
 ---
 
